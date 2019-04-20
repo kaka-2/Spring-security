@@ -59,17 +59,17 @@ public class OAuth2AuthorizationServer extends AuthorizationServerConfigurerAdap
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients.inMemory()
                 .withClient(client_id)
-                .authorizedGrantTypes("password","refresh_token")
+                .authorizedGrantTypes("password", "refresh_token")
                 .secret(passwordEncoder.encode(client_secret))
                 .scopes("all")
-                .refreshTokenValiditySeconds(60*60*10)
+                .refreshTokenValiditySeconds(60 * 60 * 10)
                 .accessTokenValiditySeconds(300);
     }
 
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
         TokenEnhancerChain tokenEnhancerChain = new TokenEnhancerChain();
-        tokenEnhancerChain.setTokenEnhancers(Arrays.asList(tokenEnhancer(),accessTokenConverter()));
+        tokenEnhancerChain.setTokenEnhancers(Arrays.asList(tokenEnhancer(), accessTokenConverter()));
         endpoints
                 .tokenStore(tokenStore())
                 .tokenEnhancer(tokenEnhancerChain)
@@ -78,14 +78,14 @@ public class OAuth2AuthorizationServer extends AuthorizationServerConfigurerAdap
     }
 
     @Bean
-    public JwtTokenStore tokenStore(){
+    public JwtTokenStore tokenStore() {
         return new JwtTokenStore(accessTokenConverter());
     }
 
     @Bean
     public JwtAccessTokenConverter accessTokenConverter() {
         JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
-        KeyStoreKeyFactory keyStoreKeyFactory = new KeyStoreKeyFactory(new ClassPathResource("jwt.jks"),"password".toCharArray());
+        KeyStoreKeyFactory keyStoreKeyFactory = new KeyStoreKeyFactory(new ClassPathResource("jwt.jks"), "password".toCharArray());
         converter.setKeyPair(keyStoreKeyFactory.getKeyPair("jwt"));
         Resource resource = new ClassPathResource("public.txt");
         String publicKey = null;
@@ -113,6 +113,4 @@ public class OAuth2AuthorizationServer extends AuthorizationServerConfigurerAdap
         return new CustomTokenEnhancer();
     }
 
-    @Bean
-    pu
 }
