@@ -112,4 +112,7 @@ public class OAuth2AuthorizationServer extends AuthorizationServerConfigurerAdap
     public TokenEnhancer tokenEnhancer() {
         return new CustomTokenEnhancer();
     }
+
+    @Bean
+    pu
 }
