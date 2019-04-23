@@ -19,10 +19,12 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 import org.springframework.security.oauth2.provider.token.DefaultTokenServices;
 import org.springframework.security.oauth2.provider.token.TokenEnhancer;
 import org.springframework.security.oauth2.provider.token.TokenEnhancerChain;
+import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 import org.springframework.security.oauth2.provider.token.store.KeyStoreKeyFactory;
 
+import javax.sql.DataSource;
 import java.io.IOException;
 import java.util.Arrays;
 
@@ -35,6 +37,9 @@ public class OAuth2AuthorizationServer extends AuthorizationServerConfigurerAdap
 
     @Value("${spring.jwt.client_secret}")
     private String client_secret;
+
+    @Autowired
+    private DataSource dataSource;
 
     @Autowired
     private CustomAccessTokenConverter customAccessTokenConverter;
@@ -77,6 +82,7 @@ public class OAuth2AuthorizationServer extends AuthorizationServerConfigurerAdap
                 .userDetailsService(userDetailsService);
     }
 
+    //Use inMemory Token Store
     @Bean
     public JwtTokenStore tokenStore() {
         return new JwtTokenStore(accessTokenConverter());
