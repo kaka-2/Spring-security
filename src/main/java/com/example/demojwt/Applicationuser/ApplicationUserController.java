@@ -59,14 +59,4 @@ public class ApplicationUserController {
 
         return new ResponseEntity<>(res,HttpStatus.CREATED);
     }
-
-    @PostConstruct
-    public void setdefaultUser(){
-        ApplicationUser user = new ApplicationUser();
-        user.setPassword(bCryptPasswordEncoder.encode("password"));
-        user.setUsername("John");
-        if(userRepository.count() == 0 ) {
-            userRepository.save(user);
-        }
-    }
 }

@@ -15,17 +15,17 @@ public class UtilExceptionHandler {
     @ExceptionHandler(UsernameNotFoundException.class)
     public ResponseEntity<ErrorResponseWrapper> exception(UsernameNotFoundException e) {
         ErrorResponseWrapper wrapper = new ErrorResponseWrapper();
-        wrapper.statusCode = HttpStatus.OK.value();
+        wrapper.statusCode = HttpStatus.NOT_FOUND.value();
         wrapper.message = e.getMessage();
         wrapper.setTimestamp(Calendar.getInstance().getTimeInMillis());
 
         return new ResponseEntity<>(wrapper,HttpStatus.OK);
     }
 
-    @ExceptionHandler
+    @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorResponseWrapper> exception(Exception e) {
         ErrorResponseWrapper wrapper = new ErrorResponseWrapper();
-        wrapper.statusCode = HttpStatus.OK.value();
+        wrapper.statusCode = HttpStatus.INTERNAL_SERVER_ERROR.value();
         wrapper.message = e.getMessage();
         wrapper.setTimestamp(Calendar.getInstance().getTimeInMillis());
 

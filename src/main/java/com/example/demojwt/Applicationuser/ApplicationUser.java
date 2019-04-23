@@ -1,12 +1,11 @@
 package com.example.demojwt.Applicationuser;
 
+import com.example.demojwt.Roles.Role;
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Collection;
 
 
 @Entity
@@ -17,5 +16,12 @@ public class ApplicationUser implements Serializable {
     public Long id;
     public String username;
     public String password;
+    public String email;
+    public boolean enabled;
+
+    @ManyToMany
+    @JoinTable(name = "users_roles",joinColumns = @JoinColumn(name = "user_id",referencedColumnName = "id"),
+    inverseJoinColumns = @JoinColumn(name = "role_id",referencedColumnName = "id"))
+    public Collection<Role> roles;
 
 }
