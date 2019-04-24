@@ -1,11 +1,11 @@
 package com.example.demojwt.Utils;
 
-import com.example.demojwt.Applicationuser.ApplicationUser;
-import com.example.demojwt.Applicationuser.ApplicationUserRepository;
-import com.example.demojwt.Priviledge.Privilege;
-import com.example.demojwt.Priviledge.PrivilegeRepository;
-import com.example.demojwt.Roles.Role;
-import com.example.demojwt.Roles.RoleRepository;
+import com.example.demojwt.Applicationuser.domain.ApplicationUser;
+import com.example.demojwt.Applicationuser.repository.ApplicationUserRepository;
+import com.example.demojwt.Applicationuser.domain.Privilege;
+import com.example.demojwt.Applicationuser.repository.PrivilegeRepository;
+import com.example.demojwt.Applicationuser.domain.Role;
+import com.example.demojwt.Applicationuser.repository.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;

@@ -1,6 +1,5 @@
-package com.example.demojwt.Applicationuser;
+package com.example.demojwt.Applicationuser.domain;
 
-import com.example.demojwt.Roles.Role;
 import lombok.Data;
 
 import javax.persistence.*;

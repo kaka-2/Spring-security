@@ -1,8 +1,8 @@
 package com.example.demojwt.security;
 
-import com.example.demojwt.Applicationuser.ApplicationUser;
-import com.example.demojwt.Priviledge.Privilege;
-import com.example.demojwt.Roles.Role;
+import com.example.demojwt.Applicationuser.domain.ApplicationUser;
+import com.example.demojwt.Applicationuser.domain.Privilege;
+import com.example.demojwt.Applicationuser.domain.Role;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

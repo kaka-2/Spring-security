@@ -1,4 +1,4 @@
-package com.example.demojwt.Applicationuser;
+package com.example.demojwt.Utils;
 
 import lombok.Data;
 

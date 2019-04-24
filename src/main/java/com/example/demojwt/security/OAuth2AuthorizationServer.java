@@ -39,9 +39,6 @@ public class OAuth2AuthorizationServer extends AuthorizationServerConfigurerAdap
     private String client_secret;
 
     @Autowired
-    private DataSource dataSource;
-
-    @Autowired
     private CustomAccessTokenConverter customAccessTokenConverter;
 
     @Autowired
@@ -113,6 +110,8 @@ public class OAuth2AuthorizationServer extends AuthorizationServerConfigurerAdap
         tokenServices.setTokenStore(tokenStore());
         return tokenServices;
     }
+
+
 
     @Bean
     public TokenEnhancer tokenEnhancer() {

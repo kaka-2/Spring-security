@@ -1,5 +1,6 @@
-package com.example.demojwt.Applicationuser;
+package com.example.demojwt.Applicationuser.repository;
 
+import com.example.demojwt.Applicationuser.domain.ApplicationUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;

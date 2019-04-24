@@ -1,7 +1,6 @@
-package com.example.demojwt.Roles;
+package com.example.demojwt.Applicationuser.domain;
 
-import com.example.demojwt.Applicationuser.ApplicationUser;
-import com.example.demojwt.Priviledge.Privilege;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -19,6 +18,7 @@ public class Role {
 
     private String name;
 
+    @JsonIgnore
     @ManyToMany(mappedBy = "roles")
     private Collection<ApplicationUser> users;
 

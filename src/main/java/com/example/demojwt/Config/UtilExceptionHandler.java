@@ -12,7 +12,7 @@ import java.util.Calendar;
 @ControllerAdvice
 public class UtilExceptionHandler {
 
-    @ExceptionHandler(UsernameNotFoundException.class)
+    @ExceptionHandler(value = UsernameNotFoundException.class)
     public ResponseEntity<ErrorResponseWrapper> exception(UsernameNotFoundException e) {
         ErrorResponseWrapper wrapper = new ErrorResponseWrapper();
         wrapper.statusCode = HttpStatus.NOT_FOUND.value();
@@ -22,7 +22,7 @@ public class UtilExceptionHandler {
         return new ResponseEntity<>(wrapper,HttpStatus.OK);
     }
 
-    @ExceptionHandler(Exception.class)
+    @ExceptionHandler(value = Exception.class)
     public ResponseEntity<ErrorResponseWrapper> exception(Exception e) {
         ErrorResponseWrapper wrapper = new ErrorResponseWrapper();
         wrapper.statusCode = HttpStatus.INTERNAL_SERVER_ERROR.value();
@@ -31,4 +31,5 @@ public class UtilExceptionHandler {
 
         return new ResponseEntity<>(wrapper,HttpStatus.OK);
     }
+
 }
