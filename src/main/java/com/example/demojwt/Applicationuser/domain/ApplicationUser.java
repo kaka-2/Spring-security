@@ -1,5 +1,6 @@
 package com.example.demojwt.Applicationuser.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -14,6 +15,8 @@ public class ApplicationUser implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long id;
     public String username;
+
+    @JsonIgnore
     public String password;
     public String email;
     public boolean enabled;
