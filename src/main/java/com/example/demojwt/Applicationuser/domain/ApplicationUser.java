@@ -20,6 +20,9 @@ public class ApplicationUser implements Serializable {
     public String password;
     public String email;
     public boolean enabled;
+    public boolean accountNonExpired;
+    public boolean accountNonLocked;
+    public boolean credentialsNonExpired;
 
     @ManyToMany
     @JoinTable(name = "users_roles",joinColumns = @JoinColumn(name = "user_id",referencedColumnName = "id"),

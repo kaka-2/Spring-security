@@ -25,6 +25,16 @@ public class UtilExceptionHandler {
         return new ResponseEntity<>(wrapper,HttpStatus.OK);
     }
 
+    @ExceptionHandler(value = IllegalStateException.class)
+    public ResponseEntity<ErrorResponseWrapper> exception(IllegalStateException e) {
+        ErrorResponseWrapper wrapper = new ErrorResponseWrapper();
+        wrapper.statusCode = HttpStatus.INTERNAL_SERVER_ERROR.value();
+        wrapper.message = e.getMessage();
+        wrapper.setTimestamp(Calendar.getInstance().getTimeInMillis());
+
+        return new ResponseEntity<>(wrapper,HttpStatus.OK);
+    }
+
     @ExceptionHandler(value = Exception.class)
     public ResponseEntity<ErrorResponseWrapper> exception(Exception e) {
         ErrorResponseWrapper wrapper = new ErrorResponseWrapper();

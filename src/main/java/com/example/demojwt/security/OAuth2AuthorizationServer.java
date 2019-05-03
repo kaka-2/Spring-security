@@ -51,6 +51,9 @@ public class OAuth2AuthorizationServer extends AuthorizationServerConfigurerAdap
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
 
+    @Autowired
+    private DataSource dataSource;
+
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
         security.tokenKeyAccess("permitAll()")
@@ -59,13 +62,14 @@ public class OAuth2AuthorizationServer extends AuthorizationServerConfigurerAdap
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-        clients.inMemory()
-                .withClient(client_id)
-                .authorizedGrantTypes("password", "refresh_token")
-                .secret(passwordEncoder.encode(client_secret))
-                .scopes("all")
-                .refreshTokenValiditySeconds(60 * 60 * 10)
-                .accessTokenValiditySeconds(300);
+        clients.jdbc(dataSource);
+//        clients.inMemory()
+//                .withClient(client_id)
+//                .authorizedGrantTypes("password", "refresh_token")
+//                .secret(passwordEncoder.encode(client_secret))
+//                .scopes("all")
+//                .refreshTokenValiditySeconds(60 * 60 * 10)
+//                .accessTokenValiditySeconds(300);
     }
 
     @Override
@@ -79,10 +83,15 @@ public class OAuth2AuthorizationServer extends AuthorizationServerConfigurerAdap
                 .userDetailsService(userDetailsService);
     }
 
-    //Use inMemory Token Store
+//    //Use inMemory Token Store
+//    @Bean
+//    public JwtTokenStore tokenStore() {
+//        return new JwtTokenStore(accessTokenConverter());
+//    }
+
     @Bean
-    public JwtTokenStore tokenStore() {
-        return new JwtTokenStore(accessTokenConverter());
+    public JdbcTokenStore tokenStore() {
+        return new JdbcTokenStore(dataSource);
     }
 
     @Bean
@@ -110,7 +119,6 @@ public class OAuth2AuthorizationServer extends AuthorizationServerConfigurerAdap
         tokenServices.setTokenStore(tokenStore());
         return tokenServices;
     }
-
 
 
     @Bean

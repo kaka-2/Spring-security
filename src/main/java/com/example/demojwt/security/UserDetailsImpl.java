@@ -1,7 +1,6 @@
 package com.example.demojwt.security;
 
 import com.example.demojwt.Applicationuser.domain.ApplicationUser;
-import com.example.demojwt.Applicationuser.domain.Privilege;
 import com.example.demojwt.Applicationuser.domain.Role;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -28,30 +27,16 @@ public class UserDetailsImpl implements UserDetails {
     }
 
     private Collection<? extends GrantedAuthority> translate(Collection<Role> roles) {
-        return getGrantedAuthorities(getPrivileges(roles));
-    }
-
-    private Collection<? extends GrantedAuthority> getGrantedAuthorities(List<String> privileges) {
         List<GrantedAuthority> authorities = new ArrayList<>();
-        for (String privilege: privileges) {
-            authorities.add(new SimpleGrantedAuthority(privilege));
-        }
+        for (Role role : roles) {
+            String name = role.getName().toUpperCase();
+            if (!name.startsWith("ROLE_")) {
+                name = "ROLE_" + name;
+            }
 
+            authorities.add(new SimpleGrantedAuthority(name));
+        }
         return authorities;
-    }
-
-    private List<String> getPrivileges(Collection<Role> roles) {
-        List<String> privileges = new ArrayList<>();
-        List<Privilege> collection = new ArrayList<>();
-
-        for (Role role: roles) {
-            collection.addAll(role.getPrivileges());
-        }
-        for (Privilege privilege: collection) {
-            privileges.add(privilege.getName());
-        }
-
-        return privileges;
     }
 
     @Override

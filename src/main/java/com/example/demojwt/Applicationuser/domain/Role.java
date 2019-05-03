@@ -22,12 +22,6 @@ public class Role {
     @ManyToMany(mappedBy = "roles")
     private Collection<ApplicationUser> users;
 
-    @ManyToMany
-    @JoinTable(
-            name = "roles_privileges",joinColumns = @JoinColumn(name = "role_id",referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "privilege_id",referencedColumnName = "id")
-    )
-    private Collection<Privilege> privileges;
 
     public Role(String name) {
         this.name = name;

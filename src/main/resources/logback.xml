@@ -11,15 +11,15 @@
 
         <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
             <!--rollover hourly-->
-            <fileNamePattern>./logs/logger.log_%d{yyyy-MM-dd-HH}.%i</fileNamePattern>
+            <fileNamePattern>./logs/logger.log.%d{yyyy-MM-dd-HH}.%i.log</fileNamePattern>
             <maxFileSize>10MB</maxFileSize>
         </rollingPolicy>
         <encoder>
-            <pattern>%d [%t] %X{mdcData}%5p %msg%n</pattern>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} %p %m%n</pattern>
         </encoder>
     </appender>
 
-    <root level="INFO">
-        <appender-ref ref="ROLLING" />
-    </root>
+<!--    <root level="INFO">-->
+<!--        <appender-ref ref="ROLLING" />-->
+<!--    </root>-->
 </configuration>
