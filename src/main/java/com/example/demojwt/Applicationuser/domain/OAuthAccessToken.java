@@ -10,9 +10,6 @@ import javax.persistence.*;
 public class OAuthAccessToken {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    public Long id;
-
     @Column(name = "token_id")
     public String tokenId;
 

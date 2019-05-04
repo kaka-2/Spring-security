@@ -1,5 +1,7 @@
 package com.example.demojwt.security;
 
+import org.springframework.context.annotation.Bean;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.security.oauth2.common.DefaultOAuth2AccessToken;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
 import org.springframework.security.oauth2.provider.OAuth2Authentication;
@@ -17,5 +19,12 @@ public class CustomTokenEnhancer implements TokenEnhancer {
         additionalInfo.put("organization",oAuth2Authentication.getName() + randomAlphabetic(4));
         ((DefaultOAuth2AccessToken)oAuth2AccessToken).setAdditionalInformation(additionalInfo);
         return oAuth2AccessToken;
+    }
+
+    @Bean
+    public OAuth2AccessToken readAccessToken(String tokenValue) throws EmptyResultDataAccessException,IllegalArgumentException {
+        OAuth2AccessToken accessToken = null;
+
+        return new DefaultOAuth2AccessToken(tokenValue);
     }
 }
