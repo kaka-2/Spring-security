@@ -19,6 +19,6 @@ public class UserAttempts {
     public Long id;
     public String username;
 
-    public String attempts;
+    public int attempts;
     public Date lastModified;
 }
