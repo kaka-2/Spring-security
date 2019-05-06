@@ -25,6 +25,16 @@ public class UtilExceptionHandler {
         return new ResponseEntity<>(wrapper,HttpStatus.OK);
     }
 
+    @ExceptionHandler(value = NullPointerException.class)
+    public ResponseEntity<ErrorResponseWrapper> exception(NullPointerException e) {
+        ErrorResponseWrapper wrapper = new ErrorResponseWrapper();
+        wrapper.statusCode = HttpStatus.BAD_REQUEST.value();
+        wrapper.message = e.getStackTrace();
+        wrapper.setTimestamp(Calendar.getInstance().getTimeInMillis());
+
+        return new ResponseEntity<>(wrapper,HttpStatus.OK);
+    }
+
     @ExceptionHandler(value = IllegalStateException.class)
     public ResponseEntity<ErrorResponseWrapper> exception(IllegalStateException e) {
         ErrorResponseWrapper wrapper = new ErrorResponseWrapper();
