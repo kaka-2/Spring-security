@@ -1,4 +1,4 @@
-package com.example.demojwt.Applicationuser;
+package com.example.demojwt.Applicationuser.service;
 
 import com.example.demojwt.Applicationuser.domain.ApplicationUser;
 import com.example.demojwt.Applicationuser.domain.Role;

@@ -14,10 +14,14 @@ public class ApplicationUser implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long id;
+
+    @Column(unique = true,nullable = false)
     public String username;
 
     @JsonIgnore
     public String password;
+
+    @Column(unique = true,nullable = false)
     public String email;
     public boolean enabled;
     public boolean accountNonExpired;

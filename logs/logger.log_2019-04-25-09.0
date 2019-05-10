@@ -324,7 +324,7 @@
 2019-04-25 09:40:05,311 [restartedMain]  INFO HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
 2019-04-25 09:40:06,189 [restartedMain]  INFO Initialized JPA EntityManagerFactory for persistence unit 'default'
 2019-04-25 09:40:06,230 [restartedMain]  INFO LiveReload server is running on port 35729
-2019-04-25 09:40:06,236 [restartedMain]  WARN Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'applicationUserController': Unsatisfied dependency expressed through field 'userService'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'applicationUserService' defined in file [C:\Users\ekangethe\Downloads\Oauth2JwtProject\demo-jwt\target\classes\com\example\demojwt\Applicationuser\ApplicationUserService.class]: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.example.demojwt.Applicationuser.ApplicationUserService]: Constructor threw exception; nested exception is java.lang.NullPointerException
+2019-04-25 09:40:06,236 [restartedMain]  WARN Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'applicationUserController': Unsatisfied dependency expressed through field 'userService'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'applicationUserService' defined in file [C:\Users\ekangethe\Downloads\Oauth2JwtProject\demo-jwt\target\classes\com\example\demojwt\Applicationuser\ApplicationUserService.class]: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.example.demojwt.Applicationuser.service.ApplicationUserService]: Constructor threw exception; nested exception is java.lang.NullPointerException
 2019-04-25 09:40:06,236 [restartedMain]  INFO Closing JPA EntityManagerFactory for persistence unit 'default'
 2019-04-25 09:40:06,240 [restartedMain]  INFO HikariPool-1 - Shutdown initiated...
 2019-04-25 09:40:06,246 [restartedMain]  INFO HikariPool-1 - Shutdown completed.
@@ -333,7 +333,7 @@
 
 Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
 2019-04-25 09:40:06,287 [restartedMain] ERROR Application run failed
-org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'applicationUserController': Unsatisfied dependency expressed through field 'userService'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'applicationUserService' defined in file [C:\Users\ekangethe\Downloads\Oauth2JwtProject\demo-jwt\target\classes\com\example\demojwt\Applicationuser\ApplicationUserService.class]: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.example.demojwt.Applicationuser.ApplicationUserService]: Constructor threw exception; nested exception is java.lang.NullPointerException
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'applicationUserController': Unsatisfied dependency expressed through field 'userService'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'applicationUserService' defined in file [C:\Users\ekangethe\Downloads\Oauth2JwtProject\demo-jwt\target\classes\com\example\demojwt\Applicationuser\ApplicationUserService.class]: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.example.demojwt.Applicationuser.service.ApplicationUserService]: Constructor threw exception; nested exception is java.lang.NullPointerException
 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:596)
 	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:90)
 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:374)
@@ -359,7 +359,7 @@ org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
 	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
-Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'applicationUserService' defined in file [C:\Users\ekangethe\Downloads\Oauth2JwtProject\demo-jwt\target\classes\com\example\demojwt\Applicationuser\ApplicationUserService.class]: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.example.demojwt.Applicationuser.ApplicationUserService]: Constructor threw exception; nested exception is java.lang.NullPointerException
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'applicationUserService' defined in file [C:\Users\ekangethe\Downloads\Oauth2JwtProject\demo-jwt\target\classes\com\example\demojwt\Applicationuser\ApplicationUserService.class]: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.example.demojwt.Applicationuser.service.ApplicationUserService]: Constructor threw exception; nested exception is java.lang.NullPointerException
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1303)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1197)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:555)
@@ -373,14 +373,14 @@ Caused by: org.springframework.beans.factory.BeanCreationException: Error creati
 	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1167)
 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:593)
 	... 24 common frames omitted
-Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.example.demojwt.Applicationuser.ApplicationUserService]: Constructor threw exception; nested exception is java.lang.NullPointerException
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.example.demojwt.Applicationuser.service.ApplicationUserService]: Constructor threw exception; nested exception is java.lang.NullPointerException
 	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:184)
 	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:87)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1295)
 	... 35 common frames omitted
 Caused by: java.lang.NullPointerException: null
-	at com.example.demojwt.Applicationuser.ApplicationUserService.createPrivilegeIfNotFound(ApplicationUserService.java:66)
-	at com.example.demojwt.Applicationuser.ApplicationUserService.<init>(ApplicationUserService.java:37)
+	at com.example.demojwt.Applicationuser.service.ApplicationUserService.createPrivilegeIfNotFound(ApplicationUserService.java:66)
+	at com.example.demojwt.Applicationuser.service.ApplicationUserService.<init>(ApplicationUserService.java:37)
 	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
 	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)

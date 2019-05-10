@@ -1,8 +1,9 @@
-package com.example.demojwt.Config;
+package com.example.demojwt.exception;
 
 import com.example.demojwt.Utils.ErrorResponseWrapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.LockedException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
@@ -35,17 +36,17 @@ public class UtilExceptionHandler {
         return new ResponseEntity<>(wrapper,HttpStatus.OK);
     }
 
-    @ExceptionHandler(value = IllegalStateException.class)
-    public ResponseEntity<ErrorResponseWrapper> exception(IllegalStateException e) {
-        ErrorResponseWrapper wrapper = new ErrorResponseWrapper();
-        wrapper.statusCode = HttpStatus.INTERNAL_SERVER_ERROR.value();
-        wrapper.message = e.getMessage();
-        wrapper.setTimestamp(Calendar.getInstance().getTimeInMillis());
+    @ExceptionHandler(value = LockedException.class)
+    public ResponseEntity<ErrorResponseWrapper> exception(LockedException e) {
+        ErrorResponseWrapper error = new ErrorResponseWrapper();
+        error.statusCode = HttpStatus.FORBIDDEN.value();
+        error.message = e.getMessage();
+        error.setTimestamp(Calendar.getInstance().getTimeInMillis());
 
-        return new ResponseEntity<>(wrapper,HttpStatus.OK);
+        return new ResponseEntity<>(error,HttpStatus.OK);
     }
 
-    @ExceptionHandler(value = Exception.class)
+    @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorResponseWrapper> exception(Exception e) {
         ErrorResponseWrapper wrapper = new ErrorResponseWrapper();
         wrapper.statusCode = HttpStatus.INTERNAL_SERVER_ERROR.value();

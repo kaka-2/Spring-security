@@ -17,6 +17,9 @@ public class UserDetailsImpl implements UserDetails {
     private String email;
     private Collection<? extends GrantedAuthority> authorities;
     private boolean enabled;
+    private boolean accountNonExpired;
+    private boolean accountNonLocked;
+    private boolean credentialsNonExpired;
 
     public UserDetailsImpl(ApplicationUser user) {
         this.username = user.getUsername();
@@ -24,6 +27,9 @@ public class UserDetailsImpl implements UserDetails {
         this.email = user.getEmail();
         this.enabled = user.isEnabled();
         this.authorities = translate(user.getRoles());
+        this.accountNonExpired = user.isAccountNonExpired();
+        this.accountNonLocked = user.isAccountNonLocked();
+        this.credentialsNonExpired = user.isCredentialsNonExpired();
     }
 
     private Collection<? extends GrantedAuthority> translate(Collection<Role> roles) {
@@ -57,17 +63,17 @@ public class UserDetailsImpl implements UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
-        return true;
+        return accountNonExpired;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return true;
+        return accountNonLocked;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return true;
+        return credentialsNonExpired;
     }
 
     @Override
