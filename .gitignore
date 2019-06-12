@@ -1,5 +1,6 @@
 HELP.md
 /target/
+logs
 !.mvn/wrapper/maven-wrapper.jar
 
 ### STS ###
@@ -27,3 +28,12 @@ HELP.md
 
 ### VS Code ###
 .vscode/
+logs/logger.log_2019-04-26-11.0
+logs/logger.log_2019-04-30-16.0
+logs/logger.log_2019-05-03-11.0
+logs/logger.log_2019-05-03-12.0
+logs/logger.log_2019-05-03-14.0
+logs/spring.log.2019-04-26.0.gz
+logs/spring.log.2019-04-30.0.gz
+src/main/resources/static/
+src/main/resources/templates/
