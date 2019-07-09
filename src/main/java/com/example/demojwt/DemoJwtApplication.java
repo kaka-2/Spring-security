@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 //https://www.baeldung.com/spring-angular-ecommerce
+//ctl + alt + shift +s
 @SpringBootApplication(exclude = SecurityAutoConfiguration.class)
 @RestController
 public class DemoJwtApplication {

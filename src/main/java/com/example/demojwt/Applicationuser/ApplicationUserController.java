@@ -4,6 +4,7 @@ import com.example.demojwt.Applicationuser.domain.ApplicationUser;
 import com.example.demojwt.Applicationuser.model.RegisterUser;
 import com.example.demojwt.Applicationuser.service.ApplicationUserService;
 import com.example.demojwt.Utils.ApplicationUserResponse;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
